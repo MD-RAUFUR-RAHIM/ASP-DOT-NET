@@ -25,6 +25,22 @@ namespace Conference_Ticketing_System.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+        [HttpGet]
+        [Route("all/WithVenue")]
+        public HttpResponseMessage GetWithVenue()
+        {
+            try
+            {
+                var data = ConferenceServices.GetWithVenue();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+
         [HttpGet]
         [Route("get/{id}")]
         public HttpResponseMessage Get(DateTime id)
@@ -51,7 +67,7 @@ namespace Conference_Ticketing_System.Controllers
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
-            }
+            } 
         }
         [HttpPut]
         [Route("update")]

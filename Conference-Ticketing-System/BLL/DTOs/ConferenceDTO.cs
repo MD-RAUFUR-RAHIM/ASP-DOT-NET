@@ -12,6 +12,7 @@ namespace BLL.DTOs
         public string Details { get; set; }
         public string Topic { get; set; }
         public DateTime Date { get; set; }
-        public string VenueName { get; set; }
+        public int OId { get; set; }
+        public int VId { get; set; }
     }
 }

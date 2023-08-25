@@ -14,5 +14,11 @@ namespace DAL.EF.Models
         public string Gender { get; set; }
         public string Phone { get; set; }
         public string Password { get; set; }
+        public virtual ICollection<Conference>Conferences { get; set; }
+        public OrganizerRegistration()
+        {
+            Conferences = new List<Conference>();
+        }
+
     }
 }

@@ -43,6 +43,7 @@ namespace BLL.Services
             return DataAccess.ConferenceData().Create(mapped);
 
         }
+
         public static bool Update(ConferenceDTO post)
         {
             var mapper = MapperService<ConferenceDTO, Conference>.GetMapper();
@@ -55,6 +56,18 @@ namespace BLL.Services
 
             return DataAccess.ConferenceData().Delete(id);
 
+        }
+        public static List<ConferenceWithVenueDTO> GetWithVenue()
+        {
+            var data = DataAccess.ConferenceData().Get();
+            var config = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Conference, ConferenceWithVenueDTO>()
+                .ForMember(dst=>dst.VenueName,opt=>opt.MapFrom(src=>src.Venue.Name));
+                //cfg.CreateMap<Venue, VenueDTO>();
+            });
+            var mapper = new Mapper(config);
+            var cnvrted = mapper.Map<List<ConferenceWithVenueDTO>>(data);
+            return cnvrted;
         }
     }
 }
