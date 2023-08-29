@@ -19,5 +19,25 @@ namespace DAL
         {
             return new OrganizerRegistrationRepo();
         }
+        public static IRepo<Auditorium, int, bool> AuditoriumData()
+        {
+            return new AuditoriumRepo();
+        }
+        public static IRepo<Venue, int, bool> VenueData()
+        {
+            return new VenueRepo();
+        }
+        public static IRepo<Sponsorship, int , bool> SponsorshipData()
+        {
+            return new SponsorshipRepo();
+        }
+        public static IRepo<TokenOrganizer, int , TokenOrganizer>TokenOrganizerData()
+        {
+            return new TokenRepo();
+        }
+        public static IAuth AuthDataAccess()
+        {
+            return new OrganizerRegistrationRepo();
+        }
     }
 }

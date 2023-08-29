@@ -14,5 +14,8 @@ namespace DAL.EF
         public DbSet<OrganizerRegistration> OrganizerRegistrations { get; set; }
         public DbSet<Conference> Conferences { get; set; }
         public DbSet<Venue> Venues { get; set;}
+        public DbSet<Auditorium> Auditoriums { get; set; }
+        public DbSet<Sponsorship> Sponsorships { get; set;}
+        public DbSet<TokenOrganizer> TokenOrganizers { get; set; }
     }
 }

@@ -54,9 +54,13 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="EF\CTSContext.cs" />
+    <Compile Include="EF\Models\Auditorium.cs" />
     <Compile Include="EF\Models\Conference.cs" />
     <Compile Include="EF\Models\OrganizerRegistration.cs" />
+    <Compile Include="EF\Models\Sponsorship.cs" />
+    <Compile Include="EF\Models\TokenOrganizer.cs" />
     <Compile Include="EF\Models\Venue.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202308231942184_InitDB.cs" />
     <Compile Include="Migrations\202308231942184_InitDB.designer.cs">
@@ -70,11 +74,27 @@
     <Compile Include="Migrations\202308232135009_Venue.designer.cs">
       <DependentUpon>202308232135009_Venue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202308261926316_Ankita Saha.cs" />
+    <Compile Include="Migrations\202308261926316_Ankita Saha.designer.cs">
+      <DependentUpon>202308261926316_Ankita Saha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308271935349_SponsorshipEntity.cs" />
+    <Compile Include="Migrations\202308271935349_SponsorshipEntity.designer.cs">
+      <DependentUpon>202308271935349_SponsorshipEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202308280657428_Token.cs" />
+    <Compile Include="Migrations\202308280657428_Token.designer.cs">
+      <DependentUpon>202308280657428_Token.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\AuditoriumRepo.cs" />
     <Compile Include="Repos\ConferenceRepo.cs" />
     <Compile Include="Repos\OrganizerRegistrationRepo.cs" />
     <Compile Include="Repos\Repo.cs" />
+    <Compile Include="Repos\SponsorshipRepo.cs" />
+    <Compile Include="Repos\TokenRepo.cs" />
+    <Compile Include="Repos\VenueRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -89,6 +109,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202308232135009_Venue.resx">
       <DependentUpon>202308232135009_Venue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308261926316_Ankita Saha.resx">
+      <DependentUpon>202308261926316_Ankita Saha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308271935349_SponsorshipEntity.resx">
+      <DependentUpon>202308271935349_SponsorshipEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202308280657428_Token.resx">
+      <DependentUpon>202308280657428_Token.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

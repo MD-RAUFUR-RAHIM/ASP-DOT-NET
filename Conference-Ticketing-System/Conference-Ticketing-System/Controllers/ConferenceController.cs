@@ -1,5 +1,6 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
+using Conference_Ticketing_System.AuthFilter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ namespace Conference_Ticketing_System.Controllers
 {
     public class ConferenceController : ApiController
     {
+        [Logged]
         [HttpGet]
-        [Route("all")]
+        [Route("all/Conference")]
         public HttpResponseMessage Get()
         {
             try
@@ -27,7 +29,7 @@ namespace Conference_Ticketing_System.Controllers
         }
 
         [HttpGet]
-        [Route("all/WithVenue")]
+        [Route("all/Conference/WithVenue")]
         public HttpResponseMessage GetWithVenue()
         {
             try
@@ -42,7 +44,7 @@ namespace Conference_Ticketing_System.Controllers
         }
 
         [HttpGet]
-        [Route("get/{id}")]
+        [Route("get/Conference/{id}")]
         public HttpResponseMessage Get(DateTime id)
         {
             try
@@ -56,7 +58,7 @@ namespace Conference_Ticketing_System.Controllers
             }
         }
         [HttpPost]
-        [Route("create")]
+        [Route("create/Conference")]
         public HttpResponseMessage Add(ConferenceDTO obj)
         {
             try
@@ -70,7 +72,7 @@ namespace Conference_Ticketing_System.Controllers
             } 
         }
         [HttpPut]
-        [Route("update")]
+        [Route("update/Conference")]
         public HttpResponseMessage Update(ConferenceDTO obj)
         {
             try
@@ -84,7 +86,7 @@ namespace Conference_Ticketing_System.Controllers
             }
         }
         [HttpDelete]
-        [Route("delete/{id}")]
+        [Route("delete/Conference/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             try
@@ -97,5 +99,55 @@ namespace Conference_Ticketing_System.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
             }
         }
+
+        //Newly Added
+        [HttpGet]
+        [Route("conferencesByTopic/{topic}")]
+        public HttpResponseMessage GetConferencesByTopic(string topic)
+        {
+            try
+            {
+                var data = ConferenceServices.GetConferencesByTopic(topic);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+
+        //Ajke
+        [HttpGet]
+        [Route("api/upcomingConferences")]
+        public HttpResponseMessage GetUpcomingConferences()
+        {
+            try
+            {
+                var data = ConferenceServices.GetUpcomingConferences();
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+        [HttpGet]
+        [Route("searchConferences/{keyword}")]
+        public HttpResponseMessage SearchConferences(string keyword)
+        {
+            try
+            {
+                var data = ConferenceServices.SearchConferences(keyword);
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, new { Msg = ex.Message });
+            }
+        }
+
+
+
+
     }
 }

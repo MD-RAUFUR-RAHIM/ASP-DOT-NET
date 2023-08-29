@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,18 @@ namespace DAL.EF.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Conference> Conferences { get; set; }
+        [Required]
+        public string Venue_Location { get; set; }
+
+        [Required]
+        public int Venue_Capacity { get; set; }
         public Venue()
         {
             Conferences = new List<Conference>();
+            Auditoriums = new List<Auditorium>();
         }
+        public virtual ICollection<Auditorium> Auditoriums { get; set; }
+        public virtual ICollection<Conference> Conferences { get; set; }
+
     }
 }
